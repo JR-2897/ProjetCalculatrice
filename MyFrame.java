@@ -34,7 +34,7 @@ public class MyFrame extends JFrame implements ActionListener{
         
 
         ecran.setHorizontalAlignment(JLabel.RIGHT);
-        ecran.setPreferredSize(new Dimension(250, 20));
+        ecran.setPreferredSize(new Dimension(290, 20));
         numb.setPreferredSize(new Dimension(150, 150));
         op.setPreferredSize(new Dimension(100,150));
         
@@ -143,6 +143,7 @@ public class MyFrame extends JFrame implements ActionListener{
 	String ope = "";
 	int res;
 	int[] nb_list = {};
+	int base;
 	
 	public void actionPerformed(ActionEvent arg0) {
 		switch(((JButton)arg0.getSource()).getText()){
@@ -201,8 +202,26 @@ public class MyFrame extends JFrame implements ActionListener{
 				ecran.setText(Integer.toString(res));
 				break;
 			case "Salaire Brut -> Net":
+				base = Integer.parseInt(ecran.getText());
+				res = SalaireBrutNet.Annee(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireBrutNet.Mois(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireBrutNet.Journee(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireBrutNet.Heure(base);
+				ecran.setText(Integer.toString(res) + "/");
 				break;
 			case "Salaire Net -> Brut":
+				base = Integer.parseInt(ecran.getText());
+				res = SalaireNetBrut.Annee(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireNetBrut.Mois(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireNetBrut.Journee(base);
+				ecran.setText(Integer.toString(res) + "/");
+				res = SalaireNetBrut.Heure(base);
+				ecran.setText(Integer.toString(res) + "/");
 				break;
 			case "Age":
 				break;
