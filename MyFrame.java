@@ -3,6 +3,7 @@ import java.awt.*;
 //import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 public class MyFrame extends JFrame implements ActionListener{
 	double nombre;
@@ -141,11 +142,14 @@ public class MyFrame extends JFrame implements ActionListener{
 	String nb_str;
 	int nb1;
 	String ope = "";
-	int res;
+	double res;
 	int[] nb_list = {};
 	int base;
+	String my_res;
 	
 	public void actionPerformed(ActionEvent arg0) {
+		DecimalFormat f = new DecimalFormat();
+		f.setMaximumFractionDigits(2);
 		switch(((JButton)arg0.getSource()).getText()){
 			case "+":
 				ope = "+";
@@ -172,19 +176,20 @@ public class MyFrame extends JFrame implements ActionListener{
 					switch(ope){
 						case "+":
 							res = Opérateur.addition(nb1, Integer.parseInt(ecran.getText()));
-							ecran.setText(Integer.toString(res));
+							f.format(res);
+							ecran.setText(Double.toString(res));
 							break;
 						case "-":
 							res = Opérateur.soustraction(nb1, Integer.parseInt(ecran.getText()));
-							ecran.setText(Integer.toString(res));
+							ecran.setText(Double.toString(res));
 							break;
 						case "*":
 							res = Opérateur.multiplication(nb1, Integer.parseInt(ecran.getText()));
-							ecran.setText(Integer.toString(res));
+							ecran.setText(Double.toString(res));
 							break;
 						case "/":
 							res = Opérateur.division(nb1, Integer.parseInt(ecran.getText()));
-							ecran.setText(Integer.toString(res));
+							ecran.setText(Double.toString(res));
 							break;
 					}
 				}
@@ -195,33 +200,41 @@ public class MyFrame extends JFrame implements ActionListener{
 				break;
 			case "Moyenne":
 				res = MedMoy.Moy(nb_list);
-				ecran.setText(Integer.toString(res));
+				ecran.setText(Double.toString(res));
 				break;
 			case "Mediane":
 				res = MedMoy.Median(nb_list);
-				ecran.setText(Integer.toString(res));
+				ecran.setText(Double.toString(res));
 				break;
 			case "Salaire Brut -> Net":
 				base = Integer.parseInt(ecran.getText());
 				res = SalaireBrutNet.Annee(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(my_res + "/ ");
 				res = SalaireBrutNet.Mois(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res + "/ ");
 				res = SalaireBrutNet.Journee(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res + "/ ");
 				res = SalaireBrutNet.Heure(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res);
 				break;
 			case "Salaire Net -> Brut":
 				base = Integer.parseInt(ecran.getText());
 				res = SalaireNetBrut.Annee(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res + "/");
 				res = SalaireNetBrut.Mois(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res + "/");
 				res = SalaireNetBrut.Journee(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res + "/");
 				res = SalaireNetBrut.Heure(base);
-				ecran.setText(Integer.toString(res) + "/");
+				my_res = f.format(res);
+				ecran.setText(ecran.getText() + my_res);
 				break;
 			case "Age":
 				break;
