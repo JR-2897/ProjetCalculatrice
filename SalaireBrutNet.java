@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class SalaireBrutNet {
 
-	@SuppressWarnings("resource")
+	/*@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		
 		
@@ -27,10 +27,23 @@ public class SalaireBrutNet {
 		System.out.println("Salaire Journalier: " + SalaireJournalier + "\n");
 		
 		System.out.println("Salaire Heure: " + SalaireHeure);
-		
-		
-		
-		
+
+	}*/
+	
+	public int Annee(int Salaire){
+		return Salaire / 1.23;
+	}
+	
+	public int Mois(int Salaire){
+		return Annee(Salaire) / 12;
+	}
+	
+	public int Journee(int Salaire){
+		return Mois(Salaire)/20;
+	}
+	
+	public int Heure(int Salaire){
+		return Journee(Salaire)/7;
 	}
 
 }
