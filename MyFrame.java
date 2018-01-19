@@ -171,6 +171,10 @@ public class MyFrame extends JFrame implements ActionListener{
 				nb1 = Integer.parseInt(ecran.getText());
 				ecran.setText("0");
 				break;
+			case "%":
+				ope = "%";
+				nb1 = Integer.parseInt(ecran.getText());
+				ecran.setText("0");
 			case "=":
 				if(ope != ""){
 					switch(ope){
@@ -191,11 +195,18 @@ public class MyFrame extends JFrame implements ActionListener{
 							res = Opérateur.division(nb1, Integer.parseInt(ecran.getText()));
 							ecran.setText(Double.toString(res));
 							break;
+						case "%":
+							res = Opérateur.modulo(nb1, Integer.parseInt(ecran.getText()));
+							ecran.setText(Double.toString(res));
+							break;
 					}
 				}
 				break;
 			case ";":
 				nb_list = MedMoy.Liste(nb_list, Integer.parseInt(ecran.getText()));
+				ecran.setText("0");
+				break;
+			case "C":
 				ecran.setText("0");
 				break;
 			case "Moyenne":
@@ -219,7 +230,7 @@ public class MyFrame extends JFrame implements ActionListener{
 				ecran.setText(ecran.getText() + my_res + "/ ");
 				res = SalaireBrutNet.Heure(base);
 				my_res = f.format(res);
-				ecran.setText(ecran.getText() + my_res);
+				ecran.setText(ecran.getText() + my_res + "/");
 				break;
 			case "Salaire Net -> Brut":
 				base = Integer.parseInt(ecran.getText());
@@ -234,7 +245,7 @@ public class MyFrame extends JFrame implements ActionListener{
 				ecran.setText(ecran.getText() + my_res + "/");
 				res = SalaireNetBrut.Heure(base);
 				my_res = f.format(res);
-				ecran.setText(ecran.getText() + my_res);
+				ecran.setText(ecran.getText() + my_res  + "/");
 				break;
 			case "Age":
 				break;
@@ -244,6 +255,7 @@ public class MyFrame extends JFrame implements ActionListener{
 					nb_str = "";
 					ecran.setText(nb_str);
 				}*/
+				
 				if(ecran.getText() == "0"){ecran.setText("");}
 			    nb_str = ecran.getText()+((JButton)arg0.getSource()).getText();
 			    //nb1 = Integer.parseInt(nb_str);
